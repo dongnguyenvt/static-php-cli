@@ -41,21 +41,7 @@ function php_compile_args() {
 USE_BACKUP="no"
 VER_PHP="8.1.14"
 cp $self_dir/extensions.txt $self_dir/extensions_install.txt
-
-# 第四个参数用于输出 PHP 和 micro 二进制文件的位置
-if [ "$4" = "" ]; then
-    dialog --backtitle "static-php-cli Compile Options" --inputbox "Please input compiled output directory" 10 50 "/dist/" 2>$self_dir/.outdir
-    if [ $? != 0 ]; then
-        clear
-        echo "canceled setting output dir, compiling PHP stopped." && rm -f $self_dir/.outdir
-        exit 1
-    else
-        OUT_DIR=$(cat $self_dir/.outdir)
-        rm -f $self_dir/.outdir
-    fi
-else
-    OUT_DIR=$4
-fi
+OUT_DIR="/dist/"
 
 if [ ! -d "$OUT_DIR" ]; then
     mkdir -p "$OUT_DIR"
