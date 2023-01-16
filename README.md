@@ -60,7 +60,7 @@ Here's help command to compile it yourself:
 ```bash
 git clone https://github.com/crazywhalecc/static-php-cli.git
 cd static-php-cli/docker
-docker build -t static-php . --build-arg USE_BACKUP_ADDRESS=no
+docker build -t static-php . --build-arg
 # Making a directory to put binary files
 mkdir dist
 # It will ask you for PHP version, extensions, and compile static binaries
@@ -80,8 +80,6 @@ If you don't want to use docker, a single script for compiling in **Alpine Linux
 cd docker
 # Change PHP Version
 export VER_PHP="8.1.14"
-# Use Original download link (Default is China mainland mirror link, for others please use 'yes' for original link)
-export USE_BACKUP="yes"
 ./fast-compiler.sh
 ```
 

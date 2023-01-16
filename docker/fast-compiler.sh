@@ -5,20 +5,7 @@
 self_dir=$(cd "$(dirname "$0")";pwd)
 
 test "$VER_PHP" = "" && VER_PHP="8.1.14"
-test "$USE_BACKUP" = "" && USE_BACKUP="no"
 test "$ALL_EXTENSIONS" = "" && ALL_EXTENSIONS="all"
-
-LINK_APK_REPO='mirrors.ustc.edu.cn'
-LINK_APK_REPO_BAK='dl-cdn.alpinelinux.org'
-
-if [ "${USE_BACKUP}" = "yes" ]; then \
-    echo "Using backup address..." && sleep 1s
-    LINK_APK_REPO=${LINK_APK_REPO_BAK}
-else
-    echo "Using original address..." && sleep 1s
-fi
-
-sed -i 's/dl-cdn.alpinelinux.org/'${LINK_APK_REPO}'/g' /etc/apk/repositories
 
 # build requirements
 apk add bash file wget cmake gcc g++ jq autoconf git libstdc++ linux-headers make m4 libgcc binutils ncurses dialog
@@ -45,19 +32,17 @@ apk add zstd-static
 # php readline dependencies
 apk add readline-static ncurses-static readline-dev
 
-test "$USE_BACKUP" = "no" && PROMPT_1="mirror" || PROMPT_1="original"
-
-$self_dir/download.sh swoole ${USE_BACKUP} && \
-    $self_dir/download.sh inotify ${USE_BACKUP} && \
-    $self_dir/download.sh mongodb ${USE_BACKUP} && \
-    $self_dir/download.sh event ${USE_BACKUP} && \
-    $self_dir/download.sh redis ${USE_BACKUP} && \
-    $self_dir/download.sh libxml2 ${USE_BACKUP} && \
-    $self_dir/download.sh xz ${USE_BACKUP} && \
-    $self_dir/download.sh protobuf ${USE_BACKUP} && \
-    $self_dir/download.sh curl ${USE_BACKUP} && \
-    $self_dir/download.sh libzip ${USE_BACKUP} && \
-    $self_dir/download.sh libiconv ${USE_BACKUP} && \
-    $self_dir/download-git.sh dongnguyenvt/phpmicro phpmicro ${USE_BACKUP} && \
+$self_dir/download.sh swoole && \
+    $self_dir/download.sh inotify && \
+    $self_dir/download.sh mongodb && \
+    $self_dir/download.sh event && \
+    $self_dir/download.sh redis && \
+    $self_dir/download.sh libxml2 && \
+    $self_dir/download.sh xz && \
+    $self_dir/download.sh protobuf && \
+    $self_dir/download.sh curl && \
+    $self_dir/download.sh libzip && \
+    $self_dir/download.sh libiconv && \
+    $self_dir/download-git.sh dongnguyenvt/phpmicro phpmicro && \
     $self_dir/compile-deps.sh && \
     $self_dir/compile-php.sh $PROMPT_1 $VER_PHP $ALL_EXTENSIONS /dist/

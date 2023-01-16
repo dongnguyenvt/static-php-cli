@@ -38,7 +38,6 @@ function php_compile_args() {
     echo $_php_arg
 }
 
-USE_BACKUP="no"
 VER_PHP="8.1.14"
 cp $self_dir/extensions.txt $self_dir/extensions_install.txt
 OUT_DIR="/dist/"
@@ -56,7 +55,7 @@ echo "All done. Downloading PHP ..."
 if [ -d "$self_dir/source/php-$VER_PHP" ]; then
     rm -rf "$self_dir/source/php-$VER_PHP"
 fi
-$self_dir/download.sh php ${USE_BACKUP} ${VER_PHP} || { echo "Download PHP failed!" && exit 1 ; }
+$self_dir/download.sh php "dummy" ${VER_PHP} || { echo "Download PHP failed!" && exit 1 ; }
 # 选择性编译依赖的库、移动需要安装的扩展到 PHP 目录
 $self_dir/check-extensions.sh check_before_configure ${VER_PHP} || { echo "Install required library failed!" && exit 1 ; }
 # 编译 PHP

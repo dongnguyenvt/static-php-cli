@@ -31,7 +31,7 @@ jobs:
       - name: Build micro and PHP distribution ${{ matrix.php-versions }} for ${{ matrix.arch }}
         id: buildphp
         run: |
-          cd docker/ && docker build . --tag static-php --build-arg USE_BACKUP_ADDRESS=yes && \
+          cd docker/ && docker build . --tag static-php --build-arg && \
             mkdir ../dist && \
             docker run --rm -v $(pwd)/../dist:/dist/ static-php build-php original ${{ matrix.php-versions }} all /dist/
       - name: Fail if anything failed

@@ -4,8 +4,6 @@ self_dir=$(cd "$(dirname "$0")";pwd)
 
 test -d "$self_dir/source/cache/" || mkdir -p "$self_dir/source/cache"
 
-test "$3" != "yes" && GITHUB_ADDR="https://gh.api.99988866.xyz/" || GITHUB_ADDR=""
-
 if [ -d "$self_dir/source/cache/$2" ]; then
     echo "Using cache for $2"
     cp -r "$self_dir/source/cache/$2" "$self_dir/source/"
