@@ -79,7 +79,7 @@ If you don't want to use docker, a single script for compiling in **Alpine Linux
 ```bash
 cd docker
 # Change PHP Version
-export VER_PHP="8.1.7"
+export VER_PHP="8.1.14"
 # Use Original download link (Default is China mainland mirror link, for others please use 'yes' for original link)
 export USE_BACKUP="yes"
 ./fast-compiler.sh
@@ -140,13 +140,13 @@ To customize PHP extensions, edit `docker/extensions.txt` file, and rules below:
 
 > 1st parameter `original` represents that you are using global original download address to fetch dependencies, if you are in mainland China, use `mirror`.
 >
-> 2nd parameter `8.1.7` is your PHP version you are compiling.
+> 2nd parameter `8.1.14` is your PHP version you are compiling.
 >
 > 3rd parameter `all` represents that you will compile all supported extensions.
 >
 > 4th parameter `/dist/` is your binary output directory.
 >
-> For example, `docker run --rm -v $(pwd)/dist:/dist/ -it static-php build-php original 8.1.7 all /dist/`
+> For example, `docker run --rm -v $(pwd)/dist:/dist/ -it static-php build-php original 8.1.14 all /dist/`
 
 - `docker/extensions.txt` edit extensions.
 - `docker/compile-php.sh` file `php_compile_args` function to adjust PHP configure arguments.
