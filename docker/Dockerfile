@@ -5,7 +5,7 @@ FROM alpine:3.17
 ENV SCRIPT_VERSION=1.5.1
 # Download address uses backup address 
 
-ARG USE_BACKUP_ADDRESS
+ARG USE_BACKUP_ADDRESS=no
 
 # (if downloading slowly, consider set it to yes)
 ENV USE_BACKUP="${USE_BACKUP_ADDRESS}"

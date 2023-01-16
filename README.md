@@ -60,7 +60,7 @@ Here's help command to compile it yourself:
 ```bash
 git clone https://github.com/crazywhalecc/static-php-cli.git
 cd static-php-cli/docker
-docker build -t static-php . --build-arg USE_BACKUP_ADDRESS=yes
+docker build -t static-php . --build-arg USE_BACKUP_ADDRESS=no
 # Making a directory to put binary files
 mkdir dist
 # It will ask you for PHP version, extensions, and compile static binaries

@@ -20,7 +20,8 @@ function do_copy_extension() {
 }
 
 function check_before_configure() {
-    list=$(cat "$EXT_LIST_FILE" | grep -v "^#" | grep -v "^$" | grep -v "^\^")
+    list=
+#    list=$(cat "$EXT_LIST_FILE" | grep -v "^#" | grep -v "^$" | grep -v "^\^")
     xml_sign="no"
     for loop in $list
     do
@@ -86,8 +87,9 @@ function check_before_configure() {
 }
 
 function check_in_configure() {
-    php_configure=""
-    list=$(cat "$EXT_LIST_FILE" | sed 's/#.*//g' | sed 's/\^.*//g' | sed -e 's/[ ]*$//g' | grep -v "^\s*$")
+    php_configure="--disable-all"
+    list=
+#    list=$(cat "$EXT_LIST_FILE" | sed 's/#.*//g' | sed 's/\^.*//g' | sed -e 's/[ ]*$//g' | grep -v "^\s*$")
     for loop in $list
     do
         case $loop in
@@ -175,7 +177,8 @@ function check_in_configure() {
 }
 
 function check_after_configure() {
-    list=$(cat "$EXT_LIST_FILE" | grep -v "^#" | grep -v "^$")
+    list=
+#    list=$(cat "$EXT_LIST_FILE" | grep -v "^#" | grep -v "^$")
     for loop in $list
     do
         case $loop in

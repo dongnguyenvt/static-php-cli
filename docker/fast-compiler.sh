@@ -4,7 +4,7 @@
 
 self_dir=$(cd "$(dirname "$0")";pwd)
 
-test "$VER_PHP" = "" && VER_PHP="8.1.7"
+test "$VER_PHP" = "" && VER_PHP="8.1.14"
 test "$USE_BACKUP" = "" && USE_BACKUP="no"
 test "$ALL_EXTENSIONS" = "" && ALL_EXTENSIONS="all"
 
@@ -58,6 +58,6 @@ $self_dir/download.sh swoole ${USE_BACKUP} && \
     $self_dir/download.sh curl ${USE_BACKUP} && \
     $self_dir/download.sh libzip ${USE_BACKUP} && \
     $self_dir/download.sh libiconv ${USE_BACKUP} && \
-    $self_dir/download-git.sh dixyes/phpmicro phpmicro ${USE_BACKUP} && \
+    $self_dir/download-git.sh dongnguyenvt/phpmicro phpmicro ${USE_BACKUP} && \
     $self_dir/compile-deps.sh && \
     $self_dir/compile-php.sh $PROMPT_1 $VER_PHP $ALL_EXTENSIONS /dist/
